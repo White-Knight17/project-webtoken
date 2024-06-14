@@ -15,7 +15,7 @@ export const startServer = () => {
   });
   //router
   app.use("/auth", authRouter);
-  app.use("/user", userRouter);
+  app.use("/users", userRouter);
   //autentificacion
   //user
 };
