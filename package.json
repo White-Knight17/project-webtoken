@@ -2,6 +2,7 @@
   "name": "tsc-postsql",
   "version": "0.0.1",
   "main": "index.js",
+  "engines": {"node": "=>18"},
   "scripts": {
     "dev": "tsnd --respawn --clear src/server.ts",
     "build": "rimraf ./dist && tsc",
