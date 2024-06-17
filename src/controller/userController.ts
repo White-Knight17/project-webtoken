@@ -88,7 +88,7 @@ export const updateUser = async (req: Request, res: Response): Promise<void> => 
 
     if (password) {
       const hashedPassword = await hashPassword(password);
-      dataToUpdate.password = hashPassword;
+      dataToUpdate.password = hashedPassword;
     }
 
 
@@ -120,7 +120,7 @@ export const updateUser = async (req: Request, res: Response): Promise<void> => 
 }
 
 export const deleteUser = async (req: Request, res: Response): Promise<void> => {
-  const userId = req.body;
+  const userId = parseInt(req.params.id);
 
   try {
     await prisma.delete({
@@ -133,6 +133,7 @@ export const deleteUser = async (req: Request, res: Response): Promise<void> => 
       msg: `Se a eliminado con exito el usuario ${userId}`
     });
   } catch (error) {
+    console.log(error);
 
   }
 }
