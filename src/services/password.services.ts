@@ -7,9 +7,6 @@ export const hashPassword = async (password: string): Promise<string> => {
 };
 
 //Leer y compara con la base de datos
-export const comparePassword = async (
-  password: string,
-  hash: string
-): Promise<boolean> => {
+export const comparePassword = async (password: string, hash: string): Promise<boolean> => {
   return await bcrypt.compare(password, hash);
 };

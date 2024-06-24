@@ -13,7 +13,9 @@ export const register = async (req: Request, res: Response): Promise<void> => {
         }
         if (!password) {
             res.status(400).json({ msg: 'Es obligatorio poner una contraseña' })
+            return
         }
+
         const hashesPassword = await hashPassword(password)
         console.log(hashPassword);
         const user = await prisma.create(
@@ -24,6 +26,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
                 }
             }
         );
+
         const token = generateToken(user);
         res.status(201).json({ token })
     } catch (error: any) {
@@ -45,6 +48,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
         }
         if (!password) {
             res.status(400).json({ msg: 'Es obligatorio poner una contraseña' })
+            return
         }
         const user = await prisma.findUnique({ where: { email } });
         if (!user) {
